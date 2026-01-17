@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhyay Wealth | Wisdom in Wealth</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'adhyay-navy': '#0f172a',
+                        'adhyay-dark': '#020617',
+                        'adhyay-gold': '#d4af37',
+                        'adhyay-gold-light': '#f3e5ab',
+                        'adhyay-gray': '#94a3b8',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        /* Gold Gradient Text */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #d4af37, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Elegant Card Hover */
+        .service-card {
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.15), 0 10px 10px -5px rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+        }
+
+        /* Hero Background Pattern */
+        .hero-bg {
+            background-color: #020617;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        /* Smooth Fade In */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 { animation-delay: 0.2s; }
+        .delay-200 { animation-delay: 0.4s; }
+        .delay-300 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="bg-adhyay-dark text-slate-300 font-sans antialiased selection:bg-adhyay-gold selection:text-adhyay-dark">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-adhyay-dark/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 border-2 border-adhyay-gold flex items-center justify-center rounded-sm rotate-45">
+                        <span class="text-adhyay-gold font-serif text-xl -rotate-45 font-bold">A</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-serif text-white tracking-wider">ADHYAY</span>
+                        <span class="text-[0.65rem] uppercase tracking-[0.3em] text-adhyay-gold">Wealth</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-12">
+                    <a href="#philosophy" class="text-sm uppercase tracking-widest hover:text-adhyay-gold transition-colors duration-300">Philosophy</a>
+                    <a href="#services" class="text-sm uppercase tracking-widest hover:text-adhyay-gold transition-colors duration-300">Services</a>
+                    <a href="#contact" class="px-6 py-2 border border-adhyay-gold text-adhyay-gold hover:bg-adhyay-gold hover:text-adhyay-dark transition-all duration-300 text-xs uppercase tracking-widest font-semibold">Contact Us</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-adhyay-gold focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-adhyay-dark border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-4">
+                <a href="#philosophy" class="block text-center text-sm uppercase tracking-widest text-white hover:text-adhyay-gold py-2">Philosophy</a>
+                <a href="#services" class="block text-center text-sm uppercase tracking-widest text-white hover:text-adhyay-gold py-2">Services</a>
+                <a href="#contact" class="block text-center text-sm uppercase tracking-widest text-adhyay-gold border border-adhyay-gold py-3 mx-8">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-adhyay-dark/50 to-adhyay-dark"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-block mb-6 px-4 py-1 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm fade-in-up">
+                <span class="text-xs uppercase tracking-[0.2em] text-adhyay-gold">Est. Excellence</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-tight fade-in-up delay-100">
+                Wisdom in <span class="text-gradient-gold italic">Wealth</span>
+            </h1>
+            <p class="text-lg md:text-xl text-adhyay-gray max-w-2xl mx-auto font-light leading-relaxed mb-12 fade-in-up delay-200">
+                Disciplined, research-driven financial services across crypto education, equity advisory, and mutual fund advisory.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center fade-in-up delay-300">
+                <a href="#services" class="group relative px-8 py-4 bg-adhyay-gold text-adhyay-dark font-semibold tracking-widest text-sm uppercase overflow-hidden">
+                    <span class="relative z-10 group-hover:text-white transition-colors duration-300">Explore Services</span>
+                    <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 mix-blend-difference"></div>
+                </a>
+                <a href="#contact" class="text-white border-b border-adhyay-gold/50 pb-1 hover:text-adhyay-gold hover:border-adhyay-gold transition-all duration-300 text-sm uppercase tracking-widest">
+                    Start Your Journey
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Philosophy / Overview -->
+    <section id="philosophy" class="py-24 bg-adhyay-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif text-white mb-6">Our Philosophy</h2>
+                    <div class="w-20 h-1 bg-adhyay-gold mb-8"></div>
+                    <p class="text-adhyay-gray leading-loose text-lg font-light mb-8">
+                        Adhyay Wealth offers clearly segregated financial services designed for different investor needs, with <strong class="text-white">transparency</strong>, <strong class="text-white">risk discipline</strong>, and <strong class="text-white">compliance</strong> as core principles.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-check text-adhyay-gold mt-1"></i>
+                            <span class="text-slate-300">Research-driven approach to every asset class.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-check text-adhyay-gold mt-1"></i>
+                            <span class="text-slate-300">Strict adherence to risk management protocols.</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="fas fa-check text-adhyay-gold mt-1"></i>
+                            <span class="text-slate-300">Tailored strategies for wealth preservation and growth.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 border border-adhyay-gold/20 transform rotate-3"></div>
+                    <div class="bg-adhyay-navy p-10 relative border border-white/5 shadow-2xl">
+                        <h3 class="font-serif text-2xl text-white mb-8 text-center">Service Matrix</h3>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                                <div>
+                                    <p class="text-adhyay-gold text-sm uppercase tracking-wider font-semibold">Crypto Trading</p>
+                                    <p class="text-xs text-slate-500 mt-1">Education & Research</p>
+                                </div>
+                                <span class="px-3 py-1 bg-white/5 text-xs text-slate-300 rounded-full">Active Traders</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/5 pb-4">
+                                <div>
+                                    <p class="text-adhyay-gold text-sm uppercase tracking-wider font-semibold">Indian Stocks</p>
+                                    <p class="text-xs text-slate-500 mt-1">Advisory (SEBI-style)</p>
+                                </div>
+                                <span class="px-3 py-1 bg-white/5 text-xs text-slate-300 rounded-full">Equity Investors</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-adhyay-gold text-sm uppercase tracking-wider font-semibold">Mutual Funds</p>
+                                    <p class="text-xs text-slate-500 mt-1">Long-term Advisory</p>
+                                </div>
+                                <span class="px-3 py-1 bg-white/5 text-xs text-slate-300 rounded-full">Wealth Builders</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section id="services" class="py-24 bg-gradient-to-b from-adhyay-navy to-adhyay-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-adhyay-gold text-xs font-bold tracking-[0.2em] uppercase">Excellence in Execution</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mt-4">Our Service Offerings</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Crypto -->
+                <div class="service-card bg-adhyay-dark border border-white/5 p-8 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fab fa-bitcoin text-8xl text-white"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-adhyay-gold/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fab fa-btc text-adhyay-gold text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif text-white mb-2">Crypto Trading</h3>
+                        <p class="text-xs text-adhyay-gold uppercase tracking-widest mb-6">Education & Research</p>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                            Educational and execution-support services for digital asset markets. Independent of SEBI-regulated services.
+                        </p>
+                        
+                        <div class="space-y-4 border-t border-white/10 pt-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Min Capital</span>
+                                <span class="text-white font-serif">₹11,00,000</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Monthly Fee</span>
+                                <span class="text-white font-serif">₹15,000</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Profit Share</span>
+                                <span class="text-white font-serif">30% (Net)</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-dashed border-white/10">
+                            <p class="text-[10px] text-slate-600 italic leading-tight">
+                                Disclaimer: Cryptocurrency markets are unregulated and highly volatile. No guaranteed returns.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Stocks (Highlighted) -->
+                <div class="service-card bg-adhyay-dark border border-adhyay-gold p-8 relative overflow-hidden transform md:-translate-y-4 shadow-2xl shadow-adhyay-gold/5">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i class="fas fa-chart-line text-8xl text-adhyay-gold"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-adhyay-gold rounded-full flex items-center justify-center mb-6 text-adhyay-dark">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif text-white mb-2">Indian Stocks</h3>
+                        <p class="text-xs text-adhyay-gold uppercase tracking-widest mb-6">Equity Advisory</p>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                            Research-driven equity advisory focusing on capital protection, disciplined risk management, and consistent market participation.
+                        </p>
+                        
+                        <div class="space-y-4 border-t border-white/10 pt-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Standard Plan</span>
+                                <span class="text-white font-serif">₹14,999/mo</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Premium Plan</span>
+                                <span class="text-white font-serif">₹19,999/mo</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Risk / Trade</span>
+                                <span class="text-white font-serif">0.5% - 1%</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Drawdown Cap</span>
+                                <span class="text-white font-serif">6-8% / mo</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-dashed border-white/10">
+                            <p class="text-[10px] text-slate-600 italic leading-tight">
+                                Disclaimer: Investments in securities market are subject to market risks. Past performance is not indicative of future results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Mutual Funds -->
+                <div class="service-card bg-adhyay-dark border border-white/5 p-8 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-seedling text-8xl text-white"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-adhyay-gold/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-seedling text-adhyay-gold text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif text-white mb-2">Mutual Funds</h3>
+                        <p class="text-xs text-adhyay-gold uppercase tracking-widest mb-6">Long-term Advisory</p>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                            Goal-based advisory services designed for long-term wealth creation through disciplined investing and quarterly reviews.
+                        </p>
+                        
+                        <div class="space-y-4 border-t border-white/10 pt-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Regular Plan</span>
+                                <span class="text-white font-serif">Commission</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Direct Plan</span>
+                                <span class="text-white font-serif">0.5% AUM/yr</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Review Cycle</span>
+                                <span class="text-white font-serif">Quarterly</span>
+                            </div>
+                             <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Horizon</span>
+                                <span class="text-white font-serif">3 - 10 Years</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-dashed border-white/10">
+                            <p class="text-[10px] text-slate-600 italic leading-tight">
+                                Mutual fund investments are subject to market risks. Read all scheme related documents carefully.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="relative py-24 bg-adhyay-dark overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl font-serif text-white mb-8">Begin Your Journey</h2>
+            <p class="text-lg text-slate-400 font-light mb-12 max-w-2xl mx-auto">
+                We partner with clients who value <span class="text-adhyay-gold">discipline</span>, <span class="text-adhyay-gold">transparency</span>, and <span class="text-adhyay-gold">long-term growth</span>. Connect with us to start your structured financial journey.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="mailto:contact@adhyaywealth.com" class="flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:border-adhyay-gold hover:bg-white/10 transition-all duration-300 group min-w-[200px]">
+                    <i class="fas fa-envelope text-adhyay-gold group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm uppercase tracking-widest text-white">Email Us</span>
+                </a>
+                <a href="https://wa.me/" class="flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:border-adhyay-gold hover:bg-white/10 transition-all duration-300 group min-w-[200px]">
+                    <i class="fab fa-whatsapp text-adhyay-gold group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm uppercase tracking-widest text-white">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <span class="font-serif text-2xl text-white tracking-wider">ADHYAY</span>
+                    <p class="text-xs text-slate-600 mt-2 uppercase tracking-widest">Wisdom in Wealth</p>
+                </div>
+                <div class="text-slate-600 text-sm">
+                    &copy; 2024 Adhyay Wealth. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Sticky Navbar effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
